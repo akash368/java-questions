@@ -1,0 +1,271 @@
+======================================================
+Q1.
+import java.util.*;
+class NumberType
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter Number:");
+		int n = sc.nextInt();
+		int ans=findType(n);
+		if(ans==0)
+		{
+			System.out.print(n+" is a perfect number");
+		}
+		else if(ans==1)
+		{
+			System.out.print(n+" is a deficient number");
+		}
+		else
+		{
+			System.out.print(n+" is a abundant number");
+		}
+	}
+	public static int findType(int n)
+	{
+		// Test the perfect  number
+		int sum = 0;
+		for(int i=1;i<n;i++)
+		{
+			if(n%i==0)
+			{
+				sum+=i;
+			}
+		}
+		if(sum==n)
+		{
+			return 0;
+		}
+		else if(sum<n)
+		{
+			return 1;
+		}
+		else 
+		{
+			return -1;
+		}
+		
+	}
+}
+======================================================
+Q2.
+import java.util.*;
+class Dots
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter Number:");
+		int n = sc.nextInt();
+		int ans=find(n);
+		if(ans==1)
+		{
+			System.out.print("Yes");
+		}
+		else
+		{
+			System.out.print("No");
+		}
+	}
+	public static int find(int n)
+	{
+		int count=0,i=1;
+		while(count<n)
+		{
+			count+=i;
+			i++;
+		}
+		if(count==n)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+}
+======================================================
+Q3.
+import java.util.*;
+class ModInverse
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter X:");
+		int x = sc.nextInt();
+		System.out.print("Enter M:");
+		int m = sc.nextInt();
+		int ans=findValue(x,m);
+		System.out.print(ans);
+		
+	}
+	public static int findValue(int x, int m)
+	{
+		for(int i=1;i<=m;i++)
+		{
+			if((x*i)%m==1)
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
+}
+======================================================
+Q4.
+import java.util.*;
+class BestMobilePlan
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		int daytime = sc.nextInt();
+		int evening = sc.nextInt();
+		int weekend = sc.nextInt();
+		printPlanDetails(daytime, evening, weekend);
+		
+	}
+	public static void printPlanDetails(int daytime, int evening, int weekend)
+	{
+		float priceA = 0, priceB = 0;
+		// for plan A
+		if(daytime<=100)
+		{
+			priceA = priceA+ evening*15 + weekend*20;
+		}
+		else
+		{
+			int dayA = daytime-100;
+			priceA = priceA+ dayA*25 + evening*15 + weekend*20;
+		}
+		
+		//for plan B 
+		if(daytime<=250)
+		{
+			priceB = priceB+ evening*35 + weekend*25;
+		}
+		else
+		{
+			int dayB = daytime-250;
+			priceB = priceB+ dayB*45 + evening*35 + weekend*25;
+		}
+		
+		//compare plan 
+		if(priceA>100)
+		{
+			priceA = priceA/100;
+		}
+		if(priceB>100)
+		{
+			priceB = priceB/100;
+		}
+		System.out.println("Plan A cost "+priceA);
+		System.out.println("Plan B cost "+priceB);
+		if(priceA>priceB)
+		{
+			System.out.print("Plan B is cheapest");
+		}
+		else if(priceA<priceB)
+		{
+			System.out.print("Plan A is cheapest");
+		}
+		else 
+		{
+			System.out.print("Plan A and B are same price");
+		}
+	}
+}
+======================================================
+Q6.
+import java.util.*;
+class expression
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		int x = sc.nextInt();
+		int n = sc.nextInt();
+		int sum = (x*(int)(Math.pow(x,n)-1))/(x-1);
+		System.out.print(sum);
+	}
+}
+======================================================
+Q9.
+import java.util.*;
+class alternatingCode
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		String n = sc.nextLine();
+		int i=0,j=n.length()-1,c=0;;
+		/*
+		Two letters x, y where x != y are said to be alternating in a code, if code is
+		of form "xyxyxy...".
+		*/
+		while(i+1<=j-1)
+		{
+			if(n.charAt(i)==n.charAt(j-1) && n.charAt(i+1)==n.charAt(j))
+			{
+				i++;j--;
+			}
+			else
+			{
+				c++;
+				break;
+			}
+		}
+		if(c<=0 && n.charAt(1)!=n.charAt(2))
+		{
+			System.out.print("Yes");
+		}
+		else
+		{
+			System.out.print("No");
+		}
+	}
+}
+======================================================
+Q10.
+import java.util.*;
+class carnival
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		int n=sc.nextInt();
+		String[] arr = new String[n];
+		for(int j=0;j<n;j++)
+		{
+			arr[j] = sc.next();
+		}
+		int c=0;
+		for(int i=0;i<arr.length;i++)
+		{
+			if(arr[i].equals("cookie"))
+			{
+				if(i+1<arr.length && arr[i+1].equals("juice"))
+				{
+					c++;
+				}
+				else
+				{
+					c=0;
+				}
+			}
+		}
+		if(c>0)
+		{
+			System.out.print("Yes");
+		}
+		else 
+		{
+			System.out.print("No");
+		}
+		//System.out.print("c: "+c+"i: "+i+"j: "+j);
+	}
+}
+======================================================
